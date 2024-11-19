@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Машинка</title>
+    <style>
+        /* Общие настройки */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #87ceeb; /* Голубое небо */
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Дорога */
+        .road {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: #555; /* Асфальт */
+            border-top: 5px solid #333; /* Край дороги */
+        }
+
+        /* Разметка на дороге */
+        .road-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: repeating-linear-gradient(
+                to right,
+                #fff 0,
+                #fff 50px,
+                transparent 50px,
+                transparent 100px
+            );
+        }
+
+        /* Машинка */
+        .car {
+            position: absolute;
+            bottom: 100px;
+            left: -220px; /* Начальная позиция */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: drive 5s linear forwards;
+        }
+
+        .car-body {
+            width: 200px;
+            height: 70px;
+            background: black;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .roof {
+            width: 120px;
+            height: 40px;
+            background: #ff6666;
+            position: absolute;
+            top: -30px;
+            left: 40px;
+            border-radius: 5px;
+        }
+
+        .window {
+            width: 40px;
+            height: 30px;
+            background: #87ceeb;
+            position: absolute;
+            border-radius: 3px;
+        }
+
+        .window.front {
+            top: -25px;
+            left: 50px;
+        }
+
+        .window.back {
+            top: -25px;
+            right: 50px;
+        }
+
+        .wheel {
+            width: 40px;
+            height: 40px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -20px;
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .wheel.front {
+            right: 20px;
+        }
+
+        .wheel.back {
+            left: 20px;
+        }
+
+        /* Фон - деревья */
+        .tree {
+            position: absolute;
+            bottom: 100px;
+            width: 50px;
+            height: 100px;
+            background: #8b4513; /* Ствол */
+            left: 20%;
+        }
+
+        .tree::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: -40px;
+            width: 130px;
+            height: 100px;
+            background: green;
+            border-radius: 50%;
+        }
+
+        .sun {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 80px;
+            height: 80px;
+            background: yellow;
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(255, 255, 0, 0.7);
+        }
+
+        /* Анимация движения машинки */
+        @keyframes drive {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(calc(100vw - 250px));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <!-- Фоновые элементы -->
+        <div class="sun"></div>
+        <div class="tree"></div>
+        <div class="road">
+            <div class="road-line"></div>
+        </div>
+        <!-- Машинка -->
+        <div class="car">
+            <div class="car-body">
+                <div class="roof"></div>
+                <div class="window front"></div>
+
+
+<div class="window back"></div>
+                <div class="wheel front"></div>
+                <div class="wheel back"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
